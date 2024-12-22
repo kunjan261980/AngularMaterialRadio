@@ -1,0 +1,54 @@
+<h1>Radio Button</h1>
+<mat-radio-group [(ngModel)]="selectedValue" (ngModelChange)="onValueChange($event)">
+  <mat-radio-button name="colors" value="green">Green</mat-radio-button>
+  <mat-radio-button name="colors" value="yellow">Yellow</mat-radio-button>
+  <mat-radio-button name="colors" value="red">Red</mat-radio-button>
+</mat-radio-group>
+<br>
+<br>
+<input type="radio" name="fruitTrees" [(ngModel)]="fruits" value="mango" (change)="onChange($event)" />&nbsp;&nbsp;
+<span class="label-text">Mango</span>
+<input type="radio" name="fruitTrees" [(ngModel)]="fruits" value="apple" (change)="onChange($event)" />&nbsp;&nbsp;
+<span class="label-text">Apple</span>
+<input type="radio" name="fruitTrees" [(ngModel)]="fruits" value="pear" (change)="onChange($event)" />&nbsp;&nbsp;
+<span class="label-text">Pear</span>
+<button (click)="reset()">Reset Button</button>
+<button (click)="changeValue()">Change Value Button</button>
+<hr>
+<hr>
+Reactive Form
+<form [formGroup]="form">
+  <div>
+    <label>Gender:</label>
+    <mat-radio-group formControlName="gender" (change)="onChange($event)">
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+      <mat-radio-button value="other">Other</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+
+  <br>
+  <br>
+  <input type="radio" formControlName="vehicles" value="car" (change)="onChangeHTMLElement($event)" />&nbsp;&nbsp;
+  <span class="label-text">Car</span>
+  <input type="radio" formControlName="vehicles" value="plane" (change)="onChangeHTMLElement($event)" />&nbsp;&nbsp;
+  <span class="label-text">Plane</span>
+  <input type="radio" formControlName="vehicles" value="train" (change)="onChangeHTMLElement($event)" />&nbsp;&nbsp;
+  <span class="label-text">Train</span>
+  <button (click)="resetReactive()">Reset Reactive Button</button>
+  <button (click)="changeReactiveValue()">Change Reactive Value Button</button>
+</form>
+
+<h1>Check Boxes NGMODEL</h1>
+<div *ngFor="let checkBox of checkBoxes">
+  <mat-checkbox value="{{checkBox.bindModel}}" [(ngModel)]="checkBox.selected"
+    (ngModelChange)="onCheckChange($event, checkBox.bindModel)">{{checkBox.label}}</mat-checkbox>
+ 
+</div>
+<button (click)="resetCheckBox()">Reset Check Box</button>
+<div *ngFor="let checkBox of checkBoxes">
+<input type="checkbox" class="custom-control-input" id="{{checkBox.label}}" name="{{checkBox.label}}"
+  value="{{checkBox.bindModel}}" [(ngModel)]="checkBox.selected" (ngModelChange)="onCheckChange($event, checkBox.bindModel)">
+<label class="custom-control-label line-h25" >{{checkBox.label}}</label>
+</div> <button (click)="resetCheckBox()">Reset Check Box</button>
